@@ -803,7 +803,7 @@ void Image(const sf::Texture& texture, const sf::Vector2f& size, const sf::Color
 {
     ImTextureID textureID = convertGLTextureHandleToImTextureID(texture.getNativeHandle());
 
-    ImGui::Image(textureID, toImVec2(size), ImVec2(0, 0), ImVec2(1, 1), toImColor(tintColor), toImColor(borderColor));
+    ImGui::ImageWithBg(textureID, toImVec2(size), ImVec2(0, 0), ImVec2(1, 1), toImColor(tintColor), toImColor(borderColor));
 }
 
 /////////////// Image Overloads for sf::RenderTexture
@@ -816,7 +816,7 @@ void Image(const sf::RenderTexture& texture, const sf::Vector2f& size, const sf:
 {
     ImTextureID textureID = convertGLTextureHandleToImTextureID(texture.getTexture().getNativeHandle());
 
-    ImGui::Image(textureID,
+    ImGui::ImageWithBg(textureID,
                  toImVec2(size),
                  ImVec2(0, 1),
                  ImVec2(1, 0), // flipped vertically,
@@ -837,7 +837,7 @@ void Image(const sf::Sprite& sprite, const sf::Color& tintColor, const sf::Color
 void Image(const sf::Sprite& sprite, const sf::Vector2f& size, const sf::Color& tintColor, const sf::Color& borderColor)
 {
     auto [uv0, uv1, textureID] = getSpriteTextureData(sprite);
-    ImGui::Image(textureID, toImVec2(size), uv0, uv1, toImColor(tintColor), toImColor(borderColor));
+    ImGui::ImageWithBg(textureID, toImVec2(size), uv0, uv1, toImColor(tintColor), toImColor(borderColor));
 }
 
 /////////////// Image Button Overloads for sf::Texture
